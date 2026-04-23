@@ -14,7 +14,7 @@ The home page provides a general overview and quick navigation pathways for the 
 * **Quick Navigation**: Click on the image hyperlinks of various plant species to jump directly to the **Cluster** page. This will automatically filter and display the cell content and clustering information for that specific plant.
 * **Database Statistics**: View real-time statistics regarding the collected cell and gene data.
 
-> **[📷 Insert Image: Screenshot of the Home page highlighting the Quick Navigation plant images]**
+![Home Page Quick Navigation](img/Home.png)
 
 ---
 
@@ -25,7 +25,7 @@ This tab provides a high-level overview of the cell composition proportions acro
 * **Cluster Pie Charts**: Visualizes the cell clusters for the four main plant species via interactive pie charts.
 * **Detailed Information**: By interacting with the pie charts and the left-side navigation menu, you can thoroughly examine the UMAP Cluster (also known as Cell Type) proportions and exact cell counts for various sub-categories within each plant.
 
-> **[📷 Insert Image: Screenshot of the Cluster page showing the interactive Pie Chart and the left-side detailed menu]**
+![Cluster Page Interactive Pie Chart](img/Cluster.png)
 
 ---
 
@@ -40,7 +40,7 @@ Access and download the raw data and associated databases used in our research t
   * **Rawdata Link**: Access the direct link to the NCBI SRA repository (e.g., [SRS9489414](https://www.ncbi.nlm.nih.gov/sra/SRS9489414)).
   * **Direct Download**: Click the download button to instantly acquire the original `.tar` or `.csv` archive files.
 
-> **[📷 Insert Image: Screenshot of the Download page showing the Filter panel and the Download/Link buttons]**
+![Download Page Filter Panel](img/Download.png)
 
 ---
 
@@ -48,7 +48,7 @@ Access and download the raw data and associated databases used in our research t
 
 Perform in-depth gene expression and cellular fingerprint analysis focused on a single species. The control panel is structured into three distinct cards, allowing you to generate UMAP, expression plot, violin plot, box plot and specific single-cell heatmaps.
 
-> **[📷 Insert Image: Screenshot showing the three control cards (Global Settings, Expression Analysis, Cellular Fingerprint) on the Single-Species page]**
+![Single-Species Control Cards](img/Single_1.png)
 
 Please follow these analytical steps:
 
@@ -78,7 +78,7 @@ Located at the bottom of the page, the generated results are organized into spec
 * **LCM Correlation**: *(Conditional Tab)* This tab appears exclusively when evaluating specific species (e.g., *Ptr*), providing specialized Laser Capture Microdissection (LCM) correlation plots for Fiber, Vessel, and Ray.
 * **Cell Heatmap**: Displays the targeted single-cell fingerprint heatmap.
 
-> **[📷 Insert Image: Screenshot of the bottom Chart Area showcasing the UMAP Representation and the Tab navigation menu]**
+![Single-Species Bottom Chart Area](img/Single_2.png)
 
 ---
 
@@ -86,7 +86,7 @@ Located at the bottom of the page, the generated results are organized into spec
 
 This advanced module allows you to compare the expression of specific Ortholog Groups simultaneously across multiple species.
 
-> **[📷 Insert Image: Screenshot of the Multi-Species selection flow and configuration panel]**
+![Multi-Species Selection Flow](img/Multi_1.png)
 
 ### 📍 Operation Flow
 1. **Select Species Number**: Define how many species you want to compare at once (Options: `2s`, `3s`, `4s`, `5s`).
@@ -103,4 +103,4 @@ Located at the bottom of the page, review your multi-species comparison:
 * **Plot Data Table**: Provides a data table corresponding to the filtered Barcodes, including `Expression (UMI)`, `UMAP-1 Coordinate`, `UMAP-2 Coordinate`, and `Ortholog_Group`.
 * **OG Table (Ortholog Group Table)**: By clicking the **Fetch Table** button (located on the right side of the analysis section), this panel will populate to list all specific Genes included within your selected Ortholog Group.
 
-> **[📷 Insert Image: Screenshot displaying the Multi-Species UMAP comparison and the OG Table populated with data]**
+![Multi-Species UMAP Comparison](img/Multi_2.png)

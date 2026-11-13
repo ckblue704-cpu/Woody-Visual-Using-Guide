@@ -4,22 +4,31 @@
 
 [Open WoodyVisual](https://festival-openings-manufacturer-artistic.trycloudflare.com/). This preview link may change when the site restarts.
 
-This guide follows the current website menu. It uses simple language on purpose: you do not need to be a bioinformatics specialist to begin. Where a scientific term is useful, it is explained in place.
+## Try your first gene query
+
+Use this example to see where a gene is expressed in *Populus trichocarpa* (`Ptr`). You can follow it even if you do not have a gene ID of your own.
+
+1. On WoodyVisual, open **Analysis Tools → Single-Species**.
+2. Under **Select a Species**, choose **Populus trichocarpa (Ptr)**. Leave **All Subgroups** and **Gene mode** selected.
+3. When the gene list is ready, open **Select Gene(s)**, search for `Potri.010G193100.v4.1`, and click the matching entry to select it. Click outside the dropdown to close it.
+4. Click **Plot Graphs**. In the **UMAP** tab, the left map shows cell types and the right map shows expression of the selected gene. Each dot is one cell. On the right, stronger colour indicates higher expression and grey indicates zero detected expression.
+5. Open **Data Table → Download CSV** to save the results of this query.
+
+See [Single-Species](#3-single-species) for the other plot types and settings.
 
 ---
 
-## What can I do here?
+## Choose a page
 
-Use WoodyVisual when you want to:
-
-- Find where a gene is expressed in a woody plant.
-- See the main groups of cells in developing wood.
-- Compare expression of genes in an ortholog group across supported species.
-- Compare normal, tension, and opposite xylem samples from *Populus trichocarpa*.
-- Browse genes linked to secondary cell wall formation.
-- Find the original data behind a plot.
-
-The site is a tool for **exploration**. A plot can help you form a good question, but it does not by itself prove that two cell groups are identical or that a gene changes significantly between treatments.
+| If you want to... | Start here | Then go to... |
+|---|---|---|
+| See where one gene is expressed | [Single-Species](#3-single-species) | **Data Table → Download CSV** to save your results. |
+| See cell counts and cluster marker genes | [Clusters (Cell Counts and DEGs)](#2-clusters-cell-counts-and-degs) | **Single-Species** to check a marker gene. |
+| Compare related genes between species | [OG Table](#7-og-table) | **Multi-Species** to plot the group. |
+| Compare normal, tension, and opposite xylem | [Ptr Multi-Condition](#5-ptr-multi-condition) | **Download** to look up sample details. |
+| Compare single-cell profiles with LCM reference profiles | [LCM Correlation](#6-lcm-correlation) | **Data Table** to see the correlation values. |
+| Start from wood cell-wall genes | [SCW Biosynthesis Genes](#8-scw-biosynthesis-genes) | **Single-Species** to plot a gene from the list. |
+| Find a public dataset or accession number | [Download](#9-download) | **Raw Data** or **Processed Data** for the sample you want. |
 
 ---
 
@@ -31,6 +40,7 @@ The site is a tool for **exploration**. A plot can help you form a good question
 | **Cell type** | A label assigned to cells based on their expression profiles and biological evidence. |
 | **UMAP** | Uniform Manifold Approximation and Projection. It places cells with similar expression profiles near each other in a two-dimensional map. |
 | **Gene ID** | The database name for a gene. It is often more reliable than a short gene symbol. |
+| **Barcode** | The identifier used to find a cell in the selected dataset. |
 | **OG** | Ortholog group. A group of genes descended from a common ancestral gene that can include several members from one species. |
 | **UMI** | Unique molecular identifier. Raw UMI counts estimate the number of captured RNA molecules for a gene in a cell. |
 | **DEGs** | Differentially expressed genes. |
@@ -40,20 +50,6 @@ The site is a tool for **exploration**. A plot can help you form a good question
 | **LCM** | Laser capture microdissection, a method for isolating selected cells or regions from tissue sections for RNA profiling. |
 
 The names and ideas used here follow the woody-plant cell work described by Tung et al. (2023) and the study of normal, tension, and opposite xylem in *Populus* by Hsieh et al. (2025). See [Scientific background](#scientific-background) for the papers.
-
----
-
-## Quick start: choose the right page
-
-| If you want to... | Start here | Then go to... |
-|---|---|---|
-| See where one gene is expressed | **Single-Species** | Download, if you need the data file. |
-| See cell counts and cluster marker genes | **Clusters (Cell Counts and DEGs)** | Single-Species to check a gene. |
-| Compare related genes between species | **OG Table** | Multi-Species. |
-| Compare normal, tension, and opposite xylem | **Ptr Multi-Condition** | Download to read sample details. |
-| Compare single-cell profiles with LCM reference profiles | **LCM Correlation** | Data Table to see the correlation values. |
-| Start from wood cell-wall genes | **SCW Biosynthesis Genes** | Single-Species, then OG Table if needed. |
-| Find a public dataset or accession number | **Download** | The original SRA/GEO record. |
 
 ---
 
@@ -67,11 +63,8 @@ The Home page introduces the database and the species it contains. Use it to dec
 
 1. Read the short introduction and check the available species.
 2. Open **Analysis Tools** in the top menu for **Single-Species**, **Multi-Species**, or **Ptr Multi-Condition**. The other tools are linked directly from the top menu.
-3. The species listed on Home are *Populus trichocarpa* (`Ptr`), *Eucalyptus grandis* (`Egr`), *Liriodendron chinense* (`Lch`), *Trochodendron aralioides* (`Tar`), and *Populus alba* var. *pyramidalis* (`Pal`).
 
-### Good first choice
-
-If you already have a gene name or gene ID, go straight to **Single-Species**. If you are still learning which kinds of wood cells are present, open **Clusters** first.
+The species listed on Home are *Populus trichocarpa* (`Ptr`), *Eucalyptus grandis* (`Egr`), *Liriodendron chinense* (`Lch`), *Trochodendron aralioides* (`Tar`), and *Populus alba* var. *pyramidalis* (`Pal`).
 
 ---
 
@@ -105,9 +98,9 @@ Single-Species shows expression of selected genes or ortholog groups in one spec
 ### Step-by-step
 
 1. Under **Select a Species**, choose your plant. For example, choose `Ptr` for *Populus trichocarpa*.
-2. Keep **All Subgroups** for an overview or choose **Specific Subgroup(s)** to limit the analysis to selected cell groups.
-3. Choose **Gene mode** or **Ortholog Group mode** and wait for the list to load. In **Gene mode**, search for a Gene ID, such as `Potri.010G193100.v4.1`. You can search without the `.v4.1` suffix.
-4. Select your targets and click **Plot Graphs**. When you select multiple genes or OGs, the plot uses their summed expression per cell.
+2. Keep **All Subgroups** for an overview. To limit the analysis, click **Specific Subgroup(s)** and choose the cell groups in the dropdown.
+3. Choose **Gene mode** for a Gene ID or **Ortholog Group mode** for an OG ID. Wait for the list to load, then open the selector, search for the ID, and click the matching entry. For a versioned Gene ID such as `Potri.010G193100.v4.1`, you can leave off the `.v4.1` suffix when searching.
+4. Click **Plot Graphs**. When you select multiple genes or OGs, the plot uses their summed expression per cell.
 5. Open **UMAP**, **Violin & Box Plots**, or **Data Table** to see the corresponding results.
 
 ### What you will see
@@ -124,7 +117,7 @@ Single-Species shows expression of selected genes or ortholog groups in one spec
 
 ### View one cell’s gene profile
 
-In **Whole Transcriptome**, select a barcode and click **Plot Gene Profile**. You can also click a cell in the UMAP and choose **View full gene profile**. The profile shows nonzero raw UMI counts and lets you choose how many top-expressed genes to display in the bar chart.
+Click a dot in the left UMAP and choose **View full gene profile**. If you already have a barcode, scroll below the results to **Whole Transcriptome**, choose it under **Select a Cell**, and click **Plot Gene Profile**. The profile shows nonzero raw UMI counts and lets you choose how many top-expressed genes to display in the bar chart.
 
 ---
 
@@ -136,11 +129,14 @@ Multi-Species shows the summed expression of an ortholog group across a selected
 
 ### Step-by-step
 
-1. Under **Select Species Number**, choose `2s`, `3s`, or `4s`. The `5s` option is unavailable because `Pal` has no ortholog data in the site.
-2. Under **Select Species Group**, choose a combination, such as `Ptr_Egr`.
-3. Keep **Select All** for an overview or use **Subgroup of Cells** to focus on selected cell groups. To select individual cells, set **Specific Cell?** to **Yes** and use **Select Cell**.
-4. Use **Select Ortholog Group** to choose an OG, such as `OG_0` for `Ptr_Egr`, then click **Plot Graph**.
-5. Use **Highlight**, **Raw UMI** or **Normalized**, and **All** or **Expressing only** to adjust the results. Open **Data Table** to inspect or download the cell-level values.
+1. Open **Analysis Tools → Multi-Species**. For a first run, choose `2s` under **Select Species Number** and `Ptr_Egr` under **Select Species Group**.
+2. Leave **Cell Group** set to **Select All** and **Specific Cell?** set to **No**.
+3. Under **Select Ortholog Group**, choose `OG_0` and click **Plot Graph**.
+4. In **UMAP**, use **Highlight** to focus on `Ptr` or `Egr`. Use **Data Table → Download CSV** to save the cell-level values.
+
+Use **Raw UMI** or **Normalized** to choose how expression is displayed, and **All** or **Expressing only** to choose which cells are included in the expression results.
+
+For a narrower query, use **Subgroup of Cells** and choose the cell groups, or set **Specific Cell?** to **Yes** and choose cells under **Select Cell**. The site supports two-, three-, and four-species OG comparisons. The `5s` option is unavailable because `Pal` has no ortholog data in the site.
 
 ### How to read the result
 
@@ -162,13 +158,11 @@ This page compares gene or OG expression across normal, tension, and opposite xy
 
 ### Step-by-step
 
-1. In **Select Sample(s)**, choose one or more samples. For example, select `Normal_bio1`, `Tension_bio1`, and `Opposite_bio1`. **Normal** corresponds to **Vertical** in GEO (`GSE267159`), the untreated upright control.
-2. In **Cell Group**, keep **All Cells** for a first overview, or choose **Subgroup of Cells** to focus on selected cell types.
-3. If you chose a subgroup, select it in **Select Subgroup of Cells**.
-4. In **Analysis Target**, choose **Gene** or **Ortholog Group**.
-5. Choose your target in the gene or ortholog group selector. For the example shown, select `Potri.010G193100.v4.1` in **Gene** mode.
-6. Click **Plot Graph**. Open **UMAP** to see the cell-type and expression maps, or use **Download CSV** in **Data Table** to save the cell-level values and sample labels.
-7. Open **Box Plot (by cell)** to compare distributions of UMI counts across individual cells. Open **Box Plot (by sample)** to compare biological replicates across conditions.
+1. Open **Analysis Tools → Ptr Multi-Condition**. Under **Select Sample(s)**, choose `Normal_bio1`, `Tension_bio1`, and `Opposite_bio1` to follow the example. **Normal** corresponds to **Vertical** in GEO (`GSE267159`), the untreated upright control.
+2. Leave **Cell Group** set to **All Cells**. To focus on a cell type, choose **Subgroup of Cells** and use **Select Subgroup of Cells**.
+3. Under **Analysis Target**, choose **Gene**, then search for and select `Potri.010G193100.v4.1` under **Select Gene(s)**. For an OG query, choose **Ortholog Group** and select an OG instead.
+4. Click **Plot Graph**. Open **UMAP** to see the cell-type and expression maps, or use **Data Table → Download CSV** to save the cell-level values and sample labels.
+5. Open **Box Plot (by cell)** to see the distribution across individual cells, or **Box Plot (by sample)** to compare biological replicates across conditions.
 
 ![Ptr Multi-Condition by-sample box plot for the fusiform lineage](img/ptr-multi-condition-results.jpg)
 
@@ -253,14 +247,14 @@ This page tells you that a gene is a useful **candidate** for a cell-wall questi
 
 ## 9. Download
 
-Download helps you find the public datasets behind the website and obtain files for your own work.
+Use **Download** to find the public datasets behind the website. To save results from a plot you made, open **Data Table** on that analysis page and click **Download CSV**.
 
 ![Download page](img/download.jpg)
 
 ### Step-by-step
 
-1. Start with one filter, usually **Species**.
-2. Add another filter only if needed, such as Tissue, Treatment, Technology, or Data Type.
+1. Open **Download** in the top menu. Type a species name into the **Filter...** field below the **Species** header.
+2. Add a filter under another column, such as **Tissue** or **Treatment**, to narrow the results.
 3. Scroll the table horizontally as needed to check the sample name, SRA/GEO accession, tissue, source, genotype, treatment, data type, and technology.
 4. Use **Raw Data** to reach the original sequencing records or **Processed Data** to download the prepared files for the sample.
 5. Save the accession number and citation information with your project notes.

@@ -41,7 +41,7 @@ See [Single-Species](#3-single-species) for the other plot types and settings.
 | **UMAP** | Uniform Manifold Approximation and Projection. It places cells with similar expression profiles near each other in a two-dimensional map. |
 | **Gene ID** | The database name for a gene. It is often more reliable than a short gene symbol. |
 | **Barcode** | The identifier used to find a cell in the selected dataset. |
-| **OG** | Ortholog group. A group of genes descended from a common ancestral gene that can include several members from one species. |
+| **OG** | Ortholog group (also called an orthologous group). It groups related genes based on sequence similarity and can include several members from one species. |
 | **UMI** | Unique molecular identifier. Raw UMI counts estimate the number of captured RNA molecules for a gene in a cell. |
 | **DEGs** | Differentially expressed genes. |
 | **Ray lineage** | The developmental path that gives rise to ray parenchyma cells in the radial system of wood. |
@@ -64,7 +64,7 @@ The Home page introduces the database and the species it contains. Use it to dec
 1. Read the short introduction and check the available species.
 2. Open **Analysis Tools** in the top menu for **Single-Species**, **Multi-Species**, or **Ptr Multi-Condition**. The other tools are linked directly from the top menu.
 
-The species listed on Home are *Populus trichocarpa* (`Ptr`), *Eucalyptus grandis* (`Egr`), *Liriodendron chinense* (`Lch`), *Trochodendron aralioides* (`Tar`), and *Populus alba* var. *pyramidalis* (`Pal`).
+The species listed on Home are *Populus trichocarpa* (`Ptr`), *Eucalyptus grandis* (`Egr`), *Liriodendron chinense* (`Lch`), *Trochodendron aralioides* (`Tar`), and *Populus alba* var. *pyramidalis* (`Pal`). Tung et al. (2023) profiled the first four species and included published `Pal` data in additional comparisons.
 
 ---
 
@@ -78,7 +78,7 @@ Use **Clusters** to see how many cells are assigned to each lineage and cluster,
 
 1. Choose `Ptr`, `Egr`, `Lch`, or `Tar` under **Select Species**. For `Pal` gene expression, use **Single-Species**.
 2. Use the tree and ring chart to see counts by lineage and cluster. Hover over a slice to see its cell count and percentage.
-3. Click a cluster slice in the outer ring to open its **Marker Genes** table below the chart. For example, select `(Ptr_6) Fusiform organizer`.
+3. Click a cluster slice in the outer ring to open its **Marker Genes** table below the chart. For example, select `(Ptr_6) Fusiform organizer`, labelled `Ptr6` in Tung et al. (2023).
 4. Read **Gene ID**, **Ortho Group**, **Mean UMI Count**, **Log2 FC** (log₂ fold change), and **Adj P-Value**. Take a Gene ID to **Single-Species** to see its expression across clusters.
 
 ### Read this page carefully
@@ -158,7 +158,7 @@ This page compares gene or OG expression across normal, tension, and opposite xy
 
 ### Step-by-step
 
-1. Open **Analysis Tools → Ptr Multi-Condition**. Under **Select Sample(s)**, choose `Normal_bio1`, `Tension_bio1`, and `Opposite_bio1` to follow the example. **Normal** corresponds to **Vertical** in GEO (`GSE267159`), the untreated upright control.
+1. Open **Analysis Tools → Ptr Multi-Condition**. Under **Select Sample(s)**, choose `Normal_bio1`, `Tension_bio1`, and `Opposite_bio1` to follow the example. **Normal** is the upright control condition. The four newer normal samples (`Normal_bio2`–`Normal_bio5`) are labelled **Vertical** in [GEO GSE267159](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE267159).
 2. Leave **Cell Group** set to **All Cells**. To focus on a cell type, choose **Subgroup of Cells** and use **Select Subgroup of Cells**.
 3. Under **Analysis Target**, choose **Gene**, then search for and select `Potri.010G193100.v4.1` under **Select Gene(s)**. For an OG query, choose **Ortholog Group** and select an OG instead.
 4. Click **Plot Graph**. Open **UMAP** to see the cell-type and expression maps, or use **Data Table → Download CSV** to save the cell-level values and sample labels.
@@ -168,9 +168,9 @@ This page compares gene or OG expression across normal, tension, and opposite xy
 
 ### How to read it
 
-The by-sample view loads all available biological replicates for the condition comparison. Each point is the mean UMI count for one cell type in one biological replicate. `Normal_bio1` is the original `Ptr` sample, labelled `N1` in the plots.
+The by-sample view loads all available biological replicates for the condition comparison. Each point is the mean UMI count for one cell type in one biological replicate. `Normal_bio1` (`N1` in the plots) is the earlier `Ptr` sample from Tung et al. (2023) that Hsieh et al. (2025) also included. Its GEO accession is [GSM5453537](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5453537).
 
-Hsieh et al. (2025) compared xylem from upright controls with tension xylem and xylem from the opposite side of bent *Populus* stems. The study found differences in developmental timing and cell-type proportions.
+Hsieh et al. (2025) compared normal xylem from upright stems with tension and opposite xylem from bent stems. They reported differences in cell-type proportions, faster differentiation in the axial system of tension xylem, and slower development in the radial system of opposite xylem. Libriform fibers in normal and tension wood belonged to the same cell type and developmental lineage.
 
 ### Important reminder
 
@@ -193,13 +193,13 @@ LCM Correlation compares single-cell expression profiles from *Populus trichocar
 
 ### How to use the information
 
-Use these correlations together with cluster annotations and marker-gene expression. A higher correlation indicates a closer match to that reference expression profile.
+A higher correlation indicates a closer match to that reference expression profile. In Tung et al. (2023, Fig. 1), correlations with the LCM profiles and marker-gene expression helped identify libriform fibers (`Ptr7`), vessel elements (`Ptr1`), and ray parenchyma cells (`Ptr8`).
 
 ---
 
 ## 7. OG Table
 
-OG Table is the place to find related genes before making a cross-species plot. It helps answer: “What is the matching gene group in another plant?”
+OG Table is the place to find related genes before making a cross-species plot. It helps you find which genes from each species belong to the same group. Tung et al. (2023) used OrthoMCL to identify orthologous groups from protein sequence similarities.
 
 [Open OG Table](https://festival-openings-manufacturer-artistic.trycloudflare.com/og-table)
 
@@ -222,7 +222,7 @@ For a large species combination, filter **Mapped Genes** or search the downloade
 
 ### A simple rule
 
-If one species has several genes in the same OG, do not call them all “the same gene”. They are related, but each may have taken on a different role.
+An OG can contain several related genes from one species. Check the member IDs before interpreting a group-level pattern as the expression of a particular gene.
 
 ---
 
@@ -241,7 +241,7 @@ This page lists *Populus trichocarpa* genes associated with secondary cell wall 
 
 ### How to read the list
 
-This page tells you that a gene is a useful **candidate** for a cell-wall question. It does not, on its own, show that the gene is active in every wood cell or in your chosen sample. Always check the gene in Single-Species.
+Tung et al. (2023) show expression of these secondary cell wall biosynthesis genes in Figs. S9–S10 and Additional file 2. Use **Single-Species** to see the expression pattern of a particular gene across clusters.
 
 ---
 
@@ -294,6 +294,6 @@ A zero count means the assay detected no RNA molecules for that gene in that cel
 This guide uses the cell names and biological context of the following studies:
 
 1. Tung, C.-C., Kuo, S.-C., Yang, C.-L. *et al.* **Single-cell transcriptomics unveils xylem cell development and evolution.** *Genome Biology* 24, 3 (2023). The study used single-cell RNA-seq and laser capture microdissection RNA-seq to describe ray and fusiform lineages in stem-differentiating xylem across four woody angiosperms. [Read the article](https://doi.org/10.1186/s13059-022-02845-1).
-2. Hsieh, J.-W. A., Liou, P.-C., Lin, C.-C. *et al.* **Single-cell and spatial multiomics identifies heterogeneous xylem development driven by mechanical stress in Populus.** *Developmental Cell* 60, 3131–3148.e8 (2025). The study examined normal, tension, and opposite xylem in *Populus*. [Read the article](https://doi.org/10.1016/j.devcel.2025.06.038).
+2. Hsieh, J.-W. A., Liou, P.-C., Lin, C.-C. *et al.* **Single-cell and spatial multiomics identifies heterogeneous xylem development driven by mechanical stress in Populus.** *Developmental Cell* 60(22), 3131–3148.e8 (2025). The study examined normal, tension, and opposite xylem in *Populus*. [Read the article](https://doi.org/10.1016/j.devcel.2025.06.038).
 
-These papers provide the biological background for understanding ray cells, fusiform cells, fibre and vessel development, and tension wood. They should be cited when their results or terminology are used in a report or publication.
+These papers provide the biological background for understanding ray cells, fusiform cells, libriform fiber and vessel element development, and tension wood. They should be cited when their results or terminology are used in a report or publication.
